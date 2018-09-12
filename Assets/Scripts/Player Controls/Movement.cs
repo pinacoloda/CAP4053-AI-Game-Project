@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour {
 	private float jumpForce = 8f;
 	private float gravity = 30f;
 	private Vector3 moveDirection = Vector3.zero;
+    public float rotationSpeed = 4f;
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +24,6 @@ public class Movement : MonoBehaviour {
 		{
             // Horizontal = sideways, Vertical = front and back
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            print(Input.GetAxis("Horizontal"));
-            print(Input.GetAxis("Vertical"));
 
             moveDirection = transform.TransformDirection(moveDirection);
 			
@@ -36,7 +35,7 @@ public class Movement : MonoBehaviour {
 			{
 				moveDirection.y = jumpForce;
 			}
-		}
+        }
 		
         // Determines how are jump is affected by gravity and frames
 		moveDirection.y -= gravity * Time.deltaTime;

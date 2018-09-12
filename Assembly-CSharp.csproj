@@ -51,6 +51,15 @@
      <Compile Include="Assets\DynamicBone\Scripts\DynamicBoneCollider.cs" />
      <Compile Include="Assets\DynamicBone\Scripts\DynamicBoneColliderBase.cs" />
      <Compile Include="Assets\DynamicBone\Scripts\DynamicBonePlaneCollider.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Camera\vThirdPersonCamera.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\CharacterController\vThirdPersonAnimator.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\CharacterController\vThirdPersonController.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\CharacterController\vThirdPersonInput.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\CharacterController\vThirdPersonMotor.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vComment.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vDestroyGameObject.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vExtensions.cs" />
+     <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vPickupItem.cs" />
      <Compile Include="Assets\Scripts\Player Controls\Attack.cs" />
      <Compile Include="Assets\Scripts\Player Controls\CameraControl.cs" />
      <Compile Include="Assets\Scripts\Player Controls\Movement.cs" />
@@ -62,6 +71,7 @@
      <Compile Include="Assets\Scripts\Skeleton Control\Skeleton_Controller.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Walk_Skeleton.cs" />
      <None Include="Assets\StoneKeep\Readme.txt" />
+     <None Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\README_Basic.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\DynamicBone\ReadMe.txt" />
  <Reference Include="UnityEngine.UI">

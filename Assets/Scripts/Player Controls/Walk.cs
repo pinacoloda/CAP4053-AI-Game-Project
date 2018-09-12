@@ -19,11 +19,26 @@ public class Walk : MonoBehaviour {
         float moveV = Input.GetAxis("Vertical");
         float moveH = Input.GetAxis("Horizontal");
 
+
         // If movement V/H is not 0 we use change boolean expression within Animator
-        if (moveV != 0 || moveH != 0)
+        bool leftClick = Input.GetButton("Fire1");
+
+        if (leftClick)
+            anim.SetBool("isAttacking", true);
+        else
+            anim.SetBool("isAttacking", false);
+
+        if (moveV != 0)
             anim.SetBool("isWalking", true);
         else
             anim.SetBool("isWalking", false);
+
+        if (moveH != 0)
+            anim.SetBool("isStraf", true);
+        else
+            anim.SetBool("isStraf", false);
+
+
 
     }
 

@@ -19,6 +19,8 @@ public class MouseLook : MonoBehaviour {
 
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
 	public RotationAxes axes = RotationAxes.MouseXAndY;
+    private Vector3 offset;
+    public GameObject player;
 	public float sensitivityX = 15F;
 	public float sensitivityY = 15F;
 
@@ -53,11 +55,20 @@ public class MouseLook : MonoBehaviour {
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
 	}
-	
-	void Start ()
+
+    void LateUpdate()
+    {
+        // Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
+        transform.position = player.transform.position + offset;
+    }
+
+    void Start ()
 	{
+        
 		// Make the rigid body not change rotation
 		if (GetComponent<Rigidbody>())
 			GetComponent<Rigidbody>().freezeRotation = true;
-	}
+
+        offset = transform.position - player.transform.position;
+    }
 }
