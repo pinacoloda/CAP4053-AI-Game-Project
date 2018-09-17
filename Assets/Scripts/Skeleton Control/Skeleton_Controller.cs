@@ -6,10 +6,14 @@ using UnityEngine.AI;
 public class Skeleton_Controller : MonoBehaviour
 {
     public float detectionRadius = 10f;
+    // Temp hp, will link classes later
+    public float hp = 100;
+    public float playerHp = 100;
 
     Transform target;
     NavMeshAgent agent;
     Animator anim;
+    GameObject enemy;
 
     // Use this for initialization
     void Start ()
@@ -18,25 +22,75 @@ public class Skeleton_Controller : MonoBehaviour
         target = GameObject.Find("Paladin").transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-
-
+        enemy = GameObject.Find("Skeleton");
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        // Determine distance from target
-        float distance = Vector3.Distance(target.position, transform.position);
+        if(hp>0)
+        {
+            /*******************************/
+            /*      Detected state         */                      
+            /*******************************/
+            // Determine distance from target
+            float distance = Vector3.Distance(target.position, transform.position);
 
-        // If spotted, start walking animation
-        if (distance > 0)
-            anim.SetBool("isWalking", true);
+            /*******************************/
+            /*     Follow state            */
+            /*******************************/
+            // If target is within radius start moving the NavMeshAgent
+            if ((distance) <= detectionRadius)
+            {
+                anim.SetBool("isWalking", true);
+                agent.SetDestination(target.position);
+            }
+
+            /*******************************/
+            /*     Stop state              */
+            /*******************************/
+            // Reached player now determine action
+            if (distance <= 2.5)
+            {
+                agent.isStopped = true;
+                anim.SetBool("isWalking", false);
+
+                /*******************************/
+                /*     Attack state            */
+                /*******************************/
+                if (playerHp > 0)
+                {
+                    anim.SetBool("isAttacking", true);
+
+                    if(playerHp <= 0)
+                    {
+                        anim.SetBool("isAttacking", false);
+                        // Player died, now reset
+                    }
+                }
+
+                anim.SetBool("isDead", true);
+                if (enemy)
+                {
+                    print("Debug");
+                    Destroy(enemy, 1.9f);
+
+                }
+            }
+            else
+            {
+                anim.SetBool("isAttacking", false);
+                agent.isStopped = false;
+            }
+
+            
+        }
         else
-            anim.SetBool("isWalking", false);
+        {
+            anim.SetBool("isDead", true);
+            // Death animation plays and despawn Skeleton
+        }
 
-        // If target is within radius start moving the NavMeshAgent
-        if (distance <= detectionRadius)
-            agent.SetDestination(target.position);
 
 	}
 

@@ -28,15 +28,11 @@ public class Walk : MonoBehaviour {
         else
             anim.SetBool("isAttacking", false);
 
-        if (moveV != 0)
+        if (moveV != 0 || moveH !=0)
             anim.SetBool("isWalking", true);
         else
             anim.SetBool("isWalking", false);
 
-        if (moveH != 0)
-            anim.SetBool("isStraf", true);
-        else
-            anim.SetBool("isStraf", false);
 
 
 

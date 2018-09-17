@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     // speed = movement speed, jumpForce = how high you jump
-	private float speed = 4f;
-	private float jumpForce = 8f;
-	private float gravity = 30f;
+	public float speed = 2f;
+	public float jumpForce = 8f;
+	public float gravity = 30f;
 	private Vector3 moveDirection = Vector3.zero;
-    public float rotationSpeed = 4f;
+    public float rotationSpeed = 50f;
 
 	// Use this for initialization
 	void Start () {
@@ -25,10 +25,13 @@ public class Movement : MonoBehaviour {
             // Horizontal = sideways, Vertical = front and back
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+            
             moveDirection = transform.TransformDirection(moveDirection);
-			
+            transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed, 0);
+
+
             // Determines our movement speed
-			moveDirection *= speed;
+            moveDirection *= speed;
 
             // Jumping control(default space key)
             if (Input.GetButtonDown("Jump"))

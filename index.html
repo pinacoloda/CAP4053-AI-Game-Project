@@ -1,15 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="mainPage.css">
+	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+	<style>
+body {
+    font-family: 'VT323';font-size: 22px;
+}
+</style>
+</head>
 <div class="header">
-  <h2>Blog Name</h2>
+<div align="center">
+<img src="projectTitle.jpg" alt="projectTitle" width="700" height="300">
+</div>
 </div>
 
 <div class="row">
   <div class="leftcolumn">
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-    </div>
     <div class="card">
       <h2>TITLE HEADING</h2>
       <h5>Title description, Sep 2, 2017</h5>
@@ -18,90 +25,31 @@
     </div>
   </div>
   <div class="rightcolumn">
-    <div class="card">
-      <h2>About Me</h2>
-      <div class="fakeimg" style="height:100px;">Image</div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+	<div class="card">
+      <h2>Presentations for game project ideas</h2>
+	  <h5>September 16, 2018</h5>
+      <p>Presentations started this week and our group coloborated in google slides to create a presentation.<br></br>
+	     We discussed each topic that needed to be on our slides and created slides accordingly, including many different gifs for examples.<br></br>
+      </p>
+    </div>
+	<div class="card">
+      <h2>Basic scripting and assets added into the new Unity project</h2>
+	  <h5>September 9, 2018</h5>
+      <p>Movement.cs will control the 3d model using character controller and reading inputs from WASD on the user's keyboard.<br></br>
+		 CameraControl.cs will handle how the 3rd person viewing will be controlled by the player using the mouse's axis as rotation points<br></br>
+		 AnimationSet.cs will control the player's animations when an action is taken and translates it to a boolean trigger within the animator in Unity.</p>
     </div>
     <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div>
+      <h2>First Meeting and game project planning</h2>
+	  <h5>September 2, 2018</h5>
+      <p>Talked about the game, the assets that need to be acquired, what scripts need to be written, and features of the game to implement.  Also talked about who will do what, when everything needs to be finished and 
+	  also created a github page to track project changes.  
+	  <br></br>Github page can be found at: https://github.com/pinacoloda/CAP4053-AI-Game-Project</p>
     </div>
-    <div class="card">
-      <h3>Follow Me</h3>
-      <p>Some text..</p>
+	    <div class="card">
+      <h2>A new team is born</h2>
+      <h5>August 28, 2018</h5>
+      <p>Team is established comprising of Kevin Wong, Jonathan Billington, and Michael Hughes; students at the Univeristy of Central Florida.</p>
     </div>
   </div>
 </div>
-
-<div class="footer">
-  <h2>Footer</h2>
-</div>
-
-
-body {
-  font-family: Arial;
-  padding: 20px;
-  background: #f1f1f1;
-}
-
-/* Header/Blog Title */
-.header {
-  padding: 30px;
-  font-size: 40px;
-  text-align: center;
-  background: white;
-}
-
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn { 
-  float: left;
-  width: 75%;
-}
-
-/* Right column */
-.rightcolumn {
-  float: left;
-  width: 25%;
-  padding-left: 20px;
-}
-
-/* Fake image */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Add a card effect for articles */
-.card {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-  margin-top: 20px;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  .leftcolumn, .rightcolumn { 
-    width: 100%;
-    padding: 0;
-  }
-}
