@@ -16,6 +16,13 @@ body {
 	width: 50%;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
 h1{
 	color: #B8860B;
 	 text-shadow:

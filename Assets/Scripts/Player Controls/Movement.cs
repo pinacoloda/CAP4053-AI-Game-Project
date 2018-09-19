@@ -25,10 +25,8 @@ public class Movement : MonoBehaviour {
             // Horizontal = sideways, Vertical = front and back
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-            
             moveDirection = transform.TransformDirection(moveDirection);
             transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed, 0);
-
 
             // Determines our movement speed
             moveDirection *= speed;
