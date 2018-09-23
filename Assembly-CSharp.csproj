@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8AEDE89A-56C0-176D-9501-D502785AD9A0}</ProjectGuid>
+    <ProjectGuid>{84049CEA-0D2E-4ADF-3532-EEB95E6A50F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,10 +60,12 @@
      <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vDestroyGameObject.cs" />
      <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vExtensions.cs" />
      <Compile Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\Scripts\Generic\vPickupItem.cs" />
+     <Compile Include="Assets\Scripts\HitBox.cs" />
      <Compile Include="Assets\Scripts\Player Controls\Attack.cs" />
      <Compile Include="Assets\Scripts\Player Controls\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\Player Controls\Movement.cs" />
+     <Compile Include="Assets\Scripts\Player Controls\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player Controls\Walk.cs" />
+     <Compile Include="Assets\Scripts\PlayerHitBox.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Attack_Skeleton.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\CameraControl_Skeleton.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Movement_Skeleton.cs" />
@@ -98,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{FA2C72A8-4213-4CA9-B8F8-D99C60F31DE9}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{39CBEDEB-53AF-47E4-0CA9-DA1205648494}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

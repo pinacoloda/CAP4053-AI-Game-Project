@@ -7,22 +7,23 @@ public class Skeleton_Controller : MonoBehaviour
 {
     public float detectionRadius = 10f;
     // Temp hp, will link classes later
-    public float hp = 100;
-    public float playerHp = 100;
+    public float hp;
+    public float playerHp;
 
     Transform target;
     NavMeshAgent agent;
     Animator anim;
-    GameObject enemy;
+    public GameObject targetObject;
+    public GameObject enemy;
 
     // Use this for initialization
     void Start ()
     {
-        // target will find object name(character in this case)
-        target = GameObject.Find("Paladin").transform;
+        // Enemy is the AI, target is the player
+        target = targetObject.transform;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        enemy = GameObject.Find("Skeleton");
+        enemy = GetComponent<GameObject>();
     }
 
 	// Update is called once per frame
@@ -50,7 +51,7 @@ public class Skeleton_Controller : MonoBehaviour
             /*     Stop state              */
             /*******************************/
             // Reached player now determine action
-            if (distance <= 2.5)
+            if (distance <= 3f)
             {
                 agent.isStopped = true;
                 anim.SetBool("isWalking", false);
@@ -64,18 +65,23 @@ public class Skeleton_Controller : MonoBehaviour
 
                     if(playerHp <= 0)
                     {
-                        anim.SetBool("isAttacking", false);
                         // Player died, now reset
                     }
                 }
-
+                else
+                {
+                    //print("Player dead");
+                    //Destroy(enemy, 1);
+                    
+                }
+                /*
                 anim.SetBool("isDead", true);
                 if (enemy)
                 {
                     print("Debug");
                     Destroy(enemy, 1.9f);
 
-                }
+                }*/
             }
             else
             {
@@ -87,8 +93,9 @@ public class Skeleton_Controller : MonoBehaviour
         }
         else
         {
-            anim.SetBool("isDead", true);
             // Death animation plays and despawn Skeleton
+            anim.SetTrigger("isDead");
+            Destroy(this.gameObject, 2.5f);    
         }
 
 

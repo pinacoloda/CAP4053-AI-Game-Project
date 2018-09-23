@@ -29,6 +29,22 @@ body {
   <div class="rightcolumn">
 	<h1><u>Update Posts</u></h1>
 	<div class="card">
+      <h2>Game Update - AI and Hitbox scripts in progress</h2>
+	  <h5>September 23, 2018</h5>
+      <p>Presentations concluded this week and Kevin created a deadline priority list that has to be finished before first playable presentations are due.    
+	  <img src="Deadlineplanning.png" class="center">
+	  <b></b>Scripts that have been added: Skeleton_Controller.cs, PlayerHitBox.cs, HitBox.cs<b></b>
+	  Skeleton_Controller.cs is a script that contains the basic AI for a Skeleton enemy, path traversal is controlled by NavMeshAgent(a built in path finding tool), AI state machine is hard coded
+	  to have states that switch according to player actions.  So far only follow, stop, attack, and death state is currently implemented.                       
+	  <img src="SkeletonController.png" class="center">
+	  PlayerHitBox.cs and HitBox.cs are almost identical in that they take GameObjects such as the player and enemy models and determine if there is a collision with their colliders to determine if hits register or not.
+	  OnTriggerEnter serves this purpose for now until a more smooth aproach can be figured out since it isn't 100% reliably counting hits by the player.  If a player uses the attack button and the collider enters
+	  the collider zone of the object with the script attached, their hp will be decremented.       
+	  <img src="HitBox.png" class="center">
+	  Throughout the week we should have a basic plan for the level design fleshed out so we can start adding assets.  
+      </p>
+    </div>
+	<div class="card">
       <h2>Presentations for game project ideas</h2>
 	  <h5>September 16, 2018</h5>
       <p>Presentations started this week and our group coloborated in google slides to create a presentation.<br></br>

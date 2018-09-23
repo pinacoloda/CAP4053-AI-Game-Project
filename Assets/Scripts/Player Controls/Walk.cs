@@ -15,6 +15,8 @@ public class Walk : MonoBehaviour {
 
 	void Update()
 	{
+
+        /*
         // Grab movement axis
         float moveV = Input.GetAxis("Vertical");
         float moveH = Input.GetAxis("Horizontal");
@@ -31,7 +33,7 @@ public class Walk : MonoBehaviour {
         if (moveV != 0 || moveH !=0)
             anim.SetBool("isWalking", true);
         else
-            anim.SetBool("isWalking", false);
+            anim.SetBool("isWalking", false);*/
 
 
 

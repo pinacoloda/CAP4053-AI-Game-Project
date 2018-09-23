@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FA2C72A8-4213-4CA9-B8F8-D99C60F31DE9}</ProjectGuid>
+    <ProjectGuid>{39CBEDEB-53AF-47E4-0CA9-DA1205648494}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -54,6 +54,7 @@
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
      <Compile Include="Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
      <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
