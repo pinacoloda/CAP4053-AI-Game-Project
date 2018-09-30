@@ -5,40 +5,23 @@ using UnityEngine;
 public class HitBox : MonoBehaviour {
     public GameObject enemy;
     public GameObject player;
+    static Animator anim;
     private static bool hit = false;
 
 	// Use this for initialization
 	void Start () {
-        
+        anim = GetComponent<Animator>();
 	}
 
     void Update()
     {
     }
 
-    // Update is called once per frame
-    void OnTriggerEnter(Collider other)
-    {
-       if (Input.GetButton("Fire1"))
-        {
-            print("Enter");
-            enemy.GetComponent<Skeleton_Controller>().hp -= 1;
-            hit = true;
-        }
-    }
-
-    /*
+    // When collider moves out of other collider triggers hp decrement and hit animation
     void OnTriggerExit(Collider other)
     {
-        if (hit)
-        { 
-            //enemy.GetComponent<Skeleton_Controller>().hp -= 1;
-            print("Exit");
-        }
-        hit = false;
-
-
-
-
-    }*/
+        anim.Play("Hit");
+        enemy.GetComponent<Skeleton_Controller>().hp -= 1;
+        print(enemy.GetComponent<Skeleton_Controller>().hp);
+    }
 }

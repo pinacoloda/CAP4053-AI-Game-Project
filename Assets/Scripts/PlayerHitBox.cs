@@ -6,6 +6,7 @@ public class PlayerHitBox : MonoBehaviour
 {
     public GameObject enemy;
     public GameObject weapon;
+    public Animator anim;
 
     // Use this for initialization
     void Start()
@@ -20,8 +21,6 @@ public class PlayerHitBox : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
-        enemy.GetComponent<Skeleton_Controller>().playerHp -= 1;
-
-        //print(enemy.GetComponent<BoxCollider>().center);
+        //enemy.GetComponent<Skeleton_Controller>().playerHp -= 1;
     }
 }

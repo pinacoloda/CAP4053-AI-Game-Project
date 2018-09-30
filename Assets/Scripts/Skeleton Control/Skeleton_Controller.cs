@@ -55,37 +55,23 @@ public class Skeleton_Controller : MonoBehaviour
             {
                 agent.isStopped = true;
                 anim.SetBool("isWalking", false);
+                anim.StopPlayback();
 
                 /*******************************/
                 /*     Attack state            */
                 /*******************************/
                 if (playerHp > 0)
                 {
-                    anim.SetBool("isAttacking", true);
-
-                    if(playerHp <= 0)
-                    {
-                        // Player died, now reset
-                    }
+                    //yield return new WaitForSeconds(1);
+                    //anim.Play("SwingHeavy");
                 }
                 else
                 {
-                    //print("Player dead");
-                    //Destroy(enemy, 1);
-                    
+                    // Player dead
                 }
-                /*
-                anim.SetBool("isDead", true);
-                if (enemy)
-                {
-                    print("Debug");
-                    Destroy(enemy, 1.9f);
-
-                }*/
             }
             else
             {
-                anim.SetBool("isAttacking", false);
                 agent.isStopped = false;
             }
 
@@ -94,8 +80,8 @@ public class Skeleton_Controller : MonoBehaviour
         else
         {
             // Death animation plays and despawn Skeleton
-            anim.SetTrigger("isDead");
-            Destroy(this.gameObject, 2.5f);    
+            anim.Play("Death");
+            Destroy(this.gameObject, 1.5f);    
         }
 
 

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     // speed = movement speed, jumpForce = how high you jump
-    public float speed;
+    public float fowardSpeed;
+    public float strafeSpeed;
+    public float backwardsSpeed;
     public float jumpForce;
     public float gravity;
 	private Vector3 moveDirection = Vector3.zero;
     public float rotationSpeed;
-    public Animator anim;
+    private bool iFrame = false;
+    Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -20,23 +23,57 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CharacterController controller = gameObject.GetComponent<CharacterController> ();
-		
-		// Direction movement when not jumping
-		if(controller.isGrounded)
-		{
+
+        // Direction movement when not jumping
+        if (controller.isGrounded && anim.GetBool("isAttacking") == false)
+        {
+            // Horizontal = sideways, Vertical = forward and backwards
             float h = Input.GetAxis("Horizontal");
             float v = Input.GetAxis("Vertical");
-            // Horizontal = sideways, Vertical = front and back
-            moveDirection = new Vector3(h, 0, v);
-            moveDirection = transform.TransformDirection(moveDirection);
-            transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed, 0);
+
+            if (h != 0 && v != 0)
+            {
+                // Right Diagnol movement
+                if (h > 0)
+                {
+                    moveDirection = new Vector3((h + v) * 0.7f, 0, v);
+                    moveDirection *= fowardSpeed;
+                    moveDirection = transform.TransformDirection(moveDirection);
+                }
+                else // Left Diagnol movement
+                {
+                    moveDirection = new Vector3(((h - v) * 0.7f), 0, v);
+                    moveDirection *= fowardSpeed;
+                    moveDirection = transform.TransformDirection(moveDirection);
+                }
+            }
+            else if(v == 0 && h != 0)
+            {
+                moveDirection = new Vector3(h, 0, v);
+                moveDirection *= strafeSpeed;
+                moveDirection = transform.TransformDirection(moveDirection);
+            }
+            else if (v > 0) // Foward movement
+            {
+                moveDirection = new Vector3(h, 0, v);
+                moveDirection *= fowardSpeed;
+                moveDirection = transform.TransformDirection(moveDirection);
+            }
+            else // Backward movement
+            {
+                moveDirection = new Vector3(h, 0, v);
+                moveDirection *= backwardsSpeed;
+                moveDirection = transform.TransformDirection(moveDirection);
+            }
+
+            // Allows model to rotate while moving diagnol directions
+            if(v != 0)
+                transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed, 0);
 
             // Determines our movement speed
-            moveDirection *= speed;
-
-            PlayAnimation(v, h);
             
-            Rolling();
+
+            PlayAnimation(v, h);  
         }
 
         // Determines how are jump is affected by gravity and frames
@@ -47,41 +84,55 @@ public class PlayerMovement : MonoBehaviour {
     // Play animation associated with Player Movement
     void PlayAnimation(float v, float h)
     {
+        iFrame = false;
+        // Attack animation
         bool leftClick = Input.GetButton("Fire1");
-        if (leftClick && v == 0)
+        if (leftClick && v == 0 && h == 0)
         {
-            anim.SetBool("isAttacking", true);
-            
-        }
-        else
-        {
-            anim.SetBool("isAttacking", false);
+            anim.SetBool("isStraf", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isWalking", false);
+            anim.Play("Attack");
         }
 
-        // 
-        if (v > 0 || h > 0 || h < 0)
+        // Move Forward
+        if (v > 0)
         {
+            Rolling(v, h);
             anim.SetBool("isWalking", true);
-            // This is where stamina is consumed
-            // Add Inviciblity frame later in build
-            anim.ResetTrigger("isRolling");
+            anim.SetBool("isStraf", false);
+            anim.SetBool("isWalkingBack", false);
         }
-        else if (v < 0)
-            anim.SetTrigger("isWalkingBack");
-        //anim.SetBool("isWalkingBack", true);
-        else
+        else if (v < 0) // Move Backwards
+        {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("isStraf", false);
+            anim.SetBool("isWalkingBack", true);
+        }
+        else if (h != 0 && v == 0) // Move Sideways
         {
             anim.SetBool("isWalking", false);
             anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isStraf", true);
+        }
+        else // Idle
+        {
+            anim.SetBool("isStraf", false);
+            anim.SetBool("isWalkingBack", false);
+            anim.SetBool("isWalking", false);
         }
     }
 
     // Special method to deal with rolling/Iframe
-    void Rolling()
+    void Rolling(float v, float h)
     {
-        if(Input.GetButtonDown("Jump"))
+        // This is where stamina is consumed
+        // Add Inviciblity frame later in build
+        if (Input.GetButtonDown("Jump"))
         {
-            anim.SetTrigger("isRolling");
+            anim.Play("Falling To Roll");
+            iFrame = true;
         }
+        
     }
 }
