@@ -66,12 +66,14 @@
      <Compile Include="Assets\Scripts\Player Controls\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player Controls\Walk.cs" />
      <Compile Include="Assets\Scripts\PlayerHitBox.cs" />
+     <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Attack_Skeleton.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\CameraControl_Skeleton.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Movement_Skeleton.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Paladin_Controller.cs" />
      <Compile Include="Assets\Scripts\Skeleton Control\Skeleton_Controller.cs" />
-     <Compile Include="Assets\Scripts\Skeleton Control\Walk_Skeleton.cs" />
+     <Compile Include="Assets\Scripts\Traps\Floor Trap\FloorTrapTrigger.cs" />
+     <Compile Include="Assets\Scripts\Traps\Floor Trap\NeedleHitBox.cs" />
      <None Include="Assets\StoneKeep\Readme.txt" />
      <None Include="Assets\Invector-3rdPersonController\Basic Locomotion LITE\README_Basic.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

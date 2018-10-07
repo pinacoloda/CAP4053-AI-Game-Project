@@ -4,24 +4,41 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour {
     public GameObject enemy;
-    public GameObject player;
     static Animator anim;
+    public GameObject playerAnim;
     private static bool hit = false;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         anim = GetComponent<Animator>();
 	}
 
     void Update()
     {
+
     }
 
-    // When collider moves out of other collider triggers hp decrement and hit animation
+    // When player sword collider enters hitbox
+    void OnTriggerEnter(Collider other)
+    {
+        // Check for current player animation name "Attack" set true if it is
+        if (playerAnim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            hit = true;
+        }
+    }
+
+    // When player sword collider moves out of hitbox
     void OnTriggerExit(Collider other)
     {
-        anim.Play("Hit");
-        enemy.GetComponent<Skeleton_Controller>().hp -= 1;
-        print(enemy.GetComponent<Skeleton_Controller>().hp);
+        // If hit was confirmed play animation and decrement hp, reset bool
+        if(hit)
+        {
+            anim.Play("Hit");
+            enemy.GetComponent<Skeleton_Controller>().hp -= 1;
+            print(enemy.GetComponent<Skeleton_Controller>().hp);
+            hit = false;
+        }
     }
 }

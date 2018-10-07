@@ -5,16 +5,16 @@ using UnityEngine.AI;
 
 public class Skeleton_Controller : MonoBehaviour
 {
+    // Changeable in Unity
     public float detectionRadius = 10f;
-    // Temp hp, will link classes later
     public float hp;
     public float playerHp;
-
+    public GameObject targetObject;
+    public GameObject enemy;
+    private bool canAttack = true;
     Transform target;
     NavMeshAgent agent;
     Animator anim;
-    public GameObject targetObject;
-    public GameObject enemy;
 
     // Use this for initialization
     void Start ()
@@ -29,10 +29,13 @@ public class Skeleton_Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(hp>0)
+        // Get player HP from PlayerStats script
+        playerHp = targetObject.GetComponent<PlayerStats>().playerHP;
+
+        if (hp > 0)
         {
             /*******************************/
-            /*      Detected state         */                      
+            /*      Detected state         */
             /*******************************/
             // Determine distance from target
             float distance = Vector3.Distance(target.position, transform.position);
@@ -62,8 +65,9 @@ public class Skeleton_Controller : MonoBehaviour
                 /*******************************/
                 if (playerHp > 0)
                 {
-                    //yield return new WaitForSeconds(1);
-                    //anim.Play("SwingHeavy");
+                    // Call Co-routine for attacking in intervals
+                    if(canAttack)
+                        StartCoroutine(wait());
                 }
                 else
                 {
@@ -75,16 +79,14 @@ public class Skeleton_Controller : MonoBehaviour
                 agent.isStopped = false;
             }
 
-            
+
         }
         else
         {
             // Death animation plays and despawn Skeleton
             anim.Play("Death");
-            Destroy(this.gameObject, 1.5f);    
+            Destroy(this.gameObject, 1.5f);
         }
-
-
 	}
 
     // This shows us detection sphere of enemy
@@ -92,6 +94,21 @@ public class Skeleton_Controller : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
 
+    // Sword swing interval Co-routine
+    void swing()
+    {
+        // If player is in animation mode attack skeleton can't attack
+        if(!targetObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            anim.Play("SwingHeavy");
+        canAttack = false;
+    }
+
+    IEnumerator wait()
+    {
+        swing();
+        yield return new WaitForSeconds(3f);
+        canAttack = true;
     }
 }

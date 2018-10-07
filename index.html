@@ -15,6 +15,16 @@ body {
 </div>
 </div>
 
+<div class="tab">
+	<button class="tabLinks"><a href="#aug28"><h2>August 28</h2></a></button>
+	<button class="tabLinks"><a href="#sep2"><h2>September 2</h2></a></button>
+	<button class="tabLinks"><a href="#sep9"><h2>September 9</h2></a></button>
+	<button class="tabLinks"><a href="#sep16"><h2>September 16</h2></a></button>
+	<button class="tabLinks"><a href="#sep23"><h2>September 23</h2></a></button>
+	<button class="tabLinks"><a href="#sep30"><h2>September 30</h2></a></button>
+	<button class="tabLinks"><a href="#oct7"><h2>October 7</h2></a></button>
+</div>
+
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
@@ -29,6 +39,28 @@ body {
   <div class="rightcolumn">
 	<h1><u>Update Posts</u></h1>
 	<div class="card">
+	    <a name="oct7"></a>
+		<h2>Game Update - Hitbox for basic floor trap implemented, player hp and stamina class created</h2>
+		<h5>October 7, 2018</h5>
+		<p>Scripts added - FloorTrapTrigger.cs, PlayerStats.cs, and NeedleHitBox.cs, for better formating please visit our GitHub page linked below.
+		<img src="hitboxImplementation.png" class="center"><br></br>FloorTrapTrigger.cs is our hitbox that controls when the needles pop up when the player steps over the box collider.  An animation
+		will play after 5 seconds.
+		<img src="floorTrapTrigger.png">
+		<br></br>PlayerStats.cs contains the player's hp and stamina currently and will be called from other scripts to be decremented when hit.  Stamina refreshes using a Co-routine that will refresh every 
+		x specified seconds made in the Unity editor.  If a player dies the animation will play, the velocity will be cut to zero, and the player will respawn at the starting point and the hp will be reset.
+		<img src="playerStats.png"><br></br>NeedleHitBox.cs is the hitbox associated with the FloorTrapTrigger.cs hitbox, if it's triggered then the needles will pop up and hit the player, if said player
+		touches the needles they will be decremented a certain amount of health.<img src="needleHitBox.png"><br></br>
+			Scripts edited - PlayerMovement.cs, HitBox.cs, PlayerHitBox.cs, Skeleton_Controller.cs<br></br><br></br>PlayerMovement.cs has been edited so that blocking, attacking, and rolling now lock the player 
+			from moving or performing any other actions while in the current animation.  Direction has been assigned to specific animations to improve the "flow" of the player model.
+			<img src="playerMovement1.png"><img src="playerMovement2.png"><img src="playerMovement3.png"><img src="playerMovement4.png"><br></br>HitBox.cs and PlayerHitBox.cs were slightly modified to implement 
+			the npc's attack so the player can now block or roll to avoid damage from the NPC.                 
+			<img src="HitBox.png"><img src="playerHitBox.png"><br></br>SkeletonController.cs was modified slightly to re-implement attacks so the player can now die from it's attacks.      
+			<img src="SkeletonController1.png"><img src="SkeletonController2.png"><img src="SkeletonController3.png"><br></br>
+			Graphics and UI are still being worked on, they should be in our next patch the following week.
+		</p>
+	</div>
+	<div class="card">
+	    <a name="sep30"></a>
 		<h2>Game Update - Hitbox script tweeked as well as player movement</h2>
 		<h5>September 30, 2018</h5>
 		<p>Schedule of due dates has been created and should be followed to ensure project is successful.
@@ -38,6 +70,7 @@ body {
 		</p>
 	</div>
 	<div class="card">
+	  <a name="sep23"></a>
       <h2>Game Update - AI and Hitbox scripts in progress</h2>
 	  <h5>September 23, 2018</h5>
       <p>Presentations concluded this week and Kevin created a deadline priority list that has to be finished before first playable presentations are due.    
@@ -54,6 +87,7 @@ body {
       </p>
     </div>
 	<div class="card">
+	  <a name="sep16"></a>
       <h2>Presentations for game project ideas</h2>
 	  <h5>September 16, 2018</h5>
       <p>Presentations started this week and our group coloborated in google slides to create a presentation.<br></br>
@@ -62,6 +96,7 @@ body {
       </p>
     </div>
 	<div class="card">
+	  <a name="sep9"></a>
       <h2>Basic scripting and assets added into the new Unity project</h2>
 	  <h5>September 9, 2018</h5>
       <p>
@@ -78,13 +113,15 @@ body {
 		 Code can be found in our github page</p>
     </div>
     <div class="card">
+	  <a name="sep2"></a>
       <h2>First Meeting and game project planning</h2>
 	  <h5>September 2, 2018</h5>
       <p>Talked about the game, the assets that need to be acquired, what scripts need to be written, and features of the game to implement.  Also talked about who will do what, when everything needs to be finished and 
 	  also created a github page to track project changes.  
 	  <br></br>Github page can be found <a href="https://github.com/pinacoloda/CAP4053-AI-Game-Project"><b>HERE</b></a></p>
     </div>
-	    <div class="card">
+	<div class="card">
+	  <a name="aug28"></a>
       <h2>A new team is born</h2>
       <h5>August 28, 2018</h5>
       <p>Team is established comprising of Kevin Wong, Jonathan Billington, and Michael Hughes; students at the Univeristy of Central Florida.</p>

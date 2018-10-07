@@ -6,14 +6,14 @@ public class CameraControl : MonoBehaviour {
 	public RotationAxes axes = RotationAxes.MouseXAndY;
     private Vector3 offset;
     public GameObject player;
+
 	public float sensitivityX = 15F;
 	public float sensitivityY = 15F;
-
 	public float minimumX = -360F;
 	public float maximumX = 360F;
-
 	public float minimumY = -60F;
 	public float maximumY = 60F;
+    public bool inverseY;
 
 	float rotationY = 0F;
 
@@ -27,8 +27,11 @@ public class CameraControl : MonoBehaviour {
 			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
-			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-		}
+            if(inverseY)
+			    transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+            else
+                transform.localEulerAngles = new Vector3(rotationY, rotationX, 0);
+        }
 		else if (axes == RotationAxes.MouseX)
 		{
 			//transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
@@ -42,7 +45,7 @@ public class CameraControl : MonoBehaviour {
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
 	}
-    
+
     // Both functions below are used to make the capsule with main camera follow the player and doesn't rotate with it.
     void LateUpdate()
     {
@@ -50,6 +53,7 @@ public class CameraControl : MonoBehaviour {
         transform.position = player.transform.position + offset;
     }
 
+    /*
     void Start ()
 	{
         
@@ -58,5 +62,5 @@ public class CameraControl : MonoBehaviour {
 			GetComponent<Rigidbody>().freezeRotation = true;
 
         offset = transform.position - player.transform.position;
-    }
+    }*/
 }
